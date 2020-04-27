@@ -9,7 +9,7 @@ exports[`App snapshot App 1`] = `
       class="App-header"
     >
       <h1>
-        Species
+        Species List
       </h1>
     </header>
   </div>
