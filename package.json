@@ -22,9 +22,13 @@
         "eject": "react-scripts eject"
     },
     "lint-staged": {
-        "src/**/*.js": [
+        "src/**/*.{js,ts,tsx}": [
             "./node_modules/.bin/eslint  --fix",
             "npm run test"
+        ],
+        "src/**/*.{scss,less,sass}": [
+            "./node_modules/.bin/stylelint  --fix",
+            "git add"
         ]
     },
     "husky": {
