@@ -1,16 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
+import * as React from 'react';
+
+import SpeciesProvider from './context/species/SpeciesContext';
+import Species from './components/Species';
+
 import './App.scss';
 
-function App() {
-    return (
-        <div className="App">
-            <header className="App-header">
-                <h1>Species List</h1>
-            </header>
-        </div>
+interface AppProps {}
 
+function App(props: AppProps) {
+    return (
+        <div className="main">
+            <SpeciesProvider>
+                <Species></Species>
+            </SpeciesProvider>
+        </div>
     );
 }
 
 export default App;
+

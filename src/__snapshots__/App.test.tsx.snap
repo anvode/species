@@ -3,15 +3,26 @@
 exports[`App snapshot App 1`] = `
 <DocumentFragment>
   <div
-    class="App"
+    class="main"
   >
-    <header
-      class="App-header"
+    <div
+      class="critically-endangered"
     >
-      <h1>
-        Species List
-      </h1>
-    </header>
+      <h2
+        class="critically-endangered__title"
+      >
+        Critically Endangered Species
+      </h2>
+    </div>
+    <div
+      class="mammals"
+    >
+      <h2
+        class="mammals__title"
+      >
+        Mammals
+      </h2>
+    </div>
   </div>
 </DocumentFragment>
 `;

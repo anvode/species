@@ -7,7 +7,7 @@ afterEach(cleanup);
 describe('App', () => {
     test('renders title', () => {
         const { getByText } = render(<App />);
-        const title = getByText(/Species/i);
+        const title = getByText(/Species/ig);
         expect(title).toBeInTheDocument();
     });
 

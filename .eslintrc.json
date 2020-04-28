@@ -85,6 +85,7 @@
             }
         ],
         "no-multi-spaces": 1,
-        "keyword-spacing": 1
+        "keyword-spacing": 1,
+        "react/prop-types": 0
     }
 }
