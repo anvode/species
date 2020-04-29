@@ -12,7 +12,9 @@ function App(props: AppProps) {
         <div className="main">
             <SpeciesProvider>
                 <h1 className="main__title">IUCN Red List of Threatened Species</h1>
-                <Species></Species>
+                <div className="container">
+                    <Species></Species>
+                </div>
             </SpeciesProvider>
         </div>
     );

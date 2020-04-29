@@ -11,10 +11,8 @@ export interface SpeciesProps {}
 
 const Species: React.FC<SpeciesProps> = () => {
     const { state: {speciesFetchError, speciesFetchLoading}, dispatch } = useContext(SpeciesContext);
-    console.log(speciesFetchError, speciesFetchLoading);
 
     useEffect(() => {
-
         fetchData(dispatch);
     }, []);
 

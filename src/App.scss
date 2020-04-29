@@ -4,10 +4,13 @@
     margin-left: auto;
     margin-right: auto;
     max-width: 1200px;
-    padding: 1rem 15px 2rem;
+    padding: 0;
     width: 100%;
 
     &__title {
+        background-color: var(--color-primary);
+        margin: 0;
+        padding: 1rem 0;
         text-align: center;
     }
 }

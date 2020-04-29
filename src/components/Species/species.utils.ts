@@ -20,7 +20,7 @@ export const fetchData = async (dispatch: React.Dispatch<any>): Promise<void> =>
 
 const getRegions = async (dispatch: React.Dispatch<any>): Promise<{identifier: string}> => {
     // get regions
-    dispatch(SetLoadingTextAction('Regions'));
+    dispatch(SetLoadingTextAction('Fetching Regions'));
     const response = await fetch(`${process.env.REACT_APP_API_URL}/region/list?token=${process.env.REACT_APP_API_TOKEN}`);
     const {results} = await response.json();
 
@@ -35,7 +35,7 @@ const getRegions = async (dispatch: React.Dispatch<any>): Promise<{identifier: s
 
 const getSpecies = async (dispatch: React.Dispatch<any>, identifier: string): Promise<{result: Species[]}> => {
     // get species
-    dispatch(SetLoadingTextAction('Species'));
+    dispatch(SetLoadingTextAction('Fetching Species'));
     const response = await fetch(`${process.env.REACT_APP_API_URL}/species/region/${identifier}/page/0?token=${process.env.REACT_APP_API_TOKEN}`);
         
     const {result} = await response.json();
