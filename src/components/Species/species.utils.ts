@@ -7,10 +7,9 @@ export const fetchData = async (dispatch: React.Dispatch<any>): Promise<void> =>
     dispatch(setFetchLoadingAction(true));
     try {
         const {identifier} = await getRegions(dispatch);
-        const {result} = await getSpecies(dispatch, identifier);
+        const SpeciesAddCriticallyEnd = await getSpeciesAddCriticallyEnd(dispatch, identifier);
 
         dispatch(setFetchLoadingAction(false));
-        console.log('result', result);
 
     } catch (err) {
         dispatch(setFetchErrorAction(err));
@@ -33,16 +32,30 @@ const getRegions = async (dispatch: React.Dispatch<any>): Promise<{identifier: s
     };
 };
 
-const getSpecies = async (dispatch: React.Dispatch<any>, identifier: string): Promise<{result: Species[]}> => {
+const getSpeciesAddCriticallyEnd = async (dispatch: React.Dispatch<any>, identifier: string): Promise<void> => {
     // get species
     dispatch(SetLoadingTextAction('Fetching Species'));
     const response = await fetch(`${process.env.REACT_APP_API_URL}/species/region/${identifier}/page/0?token=${process.env.REACT_APP_API_TOKEN}`);
         
     const {result} = await response.json();
-    
-    dispatch(setSpeciesAction(result));
 
-    return {
-        result
-    };
+    dispatch(SetLoadingTextAction('Fetching Measures'));
+    
+    const fetchMeasure = result.map(async (species: Species) => {
+        if (species.category !== 'CR') {
+            species['measures'] = null;
+        } else {
+            const responseMeasures = await fetch(`${process.env.REACT_APP_API_URL}/measures/species/id/${species.taxonid}/region/${identifier}?token=${process.env.REACT_APP_API_TOKEN}`);
+
+            const {result: dataMeasure} = await responseMeasures.json();
+            const concatMeasureText = dataMeasure.map((text: {code: string, title: string}) => text.title).join('. ');
+            species['measures'] = concatMeasureText;
+
+        }
+        return species;
+    } );
+
+    const resultMeasure: Species[] = await Promise.all(fetchMeasure);
+
+    dispatch(setSpeciesAction(resultMeasure));
 };

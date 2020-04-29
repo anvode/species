@@ -10,7 +10,7 @@ import Loader from '../loader/Loader';
 export interface SpeciesProps {}
 
 const Species: React.FC<SpeciesProps> = () => {
-    const { state: {speciesFetchError, speciesFetchLoading}, dispatch } = useContext(SpeciesContext);
+    const { state: {speciesFetchError, speciesFetchLoading, species}, dispatch } = useContext(SpeciesContext);
 
     useEffect(() => {
         fetchData(dispatch);

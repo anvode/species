@@ -19,7 +19,7 @@ exports[`App snapshot App 1`] = `
         <h2
           class="loader__title"
         >
-          Regions
+          Fetching Regions
         </h2>
         <div
           class="loader"
