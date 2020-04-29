@@ -1,8 +1,8 @@
 :root {
-    --color-base: #000000;
-    --color-primary: #61dafb;
-    --color-error: #c60021;
-    --color-gray: #e3e3e3;
+    --color-base: #4d5e55;
+    --color-primary: #c5d5cb;
+    --color-error: #fa255e;
+    --color-gray: #e3e0cf;
     --font-size-base: 1rem;
 }
 
@@ -17,6 +17,7 @@ html {
 
 body {
     background-color: #f6f5f5;
+    color: var(--color-base);
     display: flex;
     flex-direction: column;
     font-family:

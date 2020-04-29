@@ -5,16 +5,28 @@ import CriticallyEndangered from './CriticallyEndangered';
 import Mammals from './Mammals';
 import { SpeciesContext } from '../../context/species/SpeciesContext';
 import { fetchData } from './species.utils';
+import Loader from '../loader/Loader';
 
 export interface SpeciesProps {}
 
 const Species: React.FC<SpeciesProps> = () => {
-    const { state, dispatch } = useContext(SpeciesContext);
-    console.log(state);
+    const { state: {speciesFetchError, speciesFetchLoading}, dispatch } = useContext(SpeciesContext);
+    console.log(speciesFetchError, speciesFetchLoading);
 
     useEffect(() => {
+
         fetchData(dispatch);
     }, []);
+
+    if (speciesFetchError) {
+        return <>
+            {speciesFetchError}
+        </>;
+    }
+
+    if (speciesFetchLoading) {
+        return <Loader></Loader>;
+    }
 
     return <>
         <CriticallyEndangered></CriticallyEndangered>

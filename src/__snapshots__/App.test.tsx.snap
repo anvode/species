@@ -5,23 +5,27 @@ exports[`App snapshot App 1`] = `
   <div
     class="main"
   >
+    <h1
+      class="main__title"
+    >
+      IUCN Red List of Threatened Species
+    </h1>
     <div
-      class="critically-endangered"
+      class="loader__container"
     >
       <h2
-        class="critically-endangered__title"
+        class="loader__title"
       >
-        Critically Endangered Species
+        Regions
       </h2>
-    </div>
-    <div
-      class="mammals"
-    >
-      <h2
-        class="mammals__title"
+      <div
+        class="loader"
       >
-        Mammals
-      </h2>
+        <div />
+        <div />
+        <div />
+        <div />
+      </div>
     </div>
   </div>
 </DocumentFragment>

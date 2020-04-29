@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loader snapshot Loader 1`] = `
+<DocumentFragment>
+  <div
+    class="loader__container"
+  >
+    <h2
+      class="loader__title"
+    />
+    <div
+      class="loader"
+    >
+      <div />
+      <div />
+      <div />
+      <div />
+    </div>
+  </div>
+</DocumentFragment>
+`;

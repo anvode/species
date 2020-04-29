@@ -11,6 +11,7 @@ function App(props: AppProps) {
     return (
         <div className="main">
             <SpeciesProvider>
+                <h1 className="main__title">IUCN Red List of Threatened Species</h1>
                 <Species></Species>
             </SpeciesProvider>
         </div>
