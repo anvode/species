@@ -1,4 +1,6 @@
 export interface SpeciesState {
+    region: string,
+    speciesLoadingText: string;
     speciesFetchLoading: boolean;
     speciesFetchError: boolean;
     regions: Region[];

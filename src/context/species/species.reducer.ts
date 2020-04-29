@@ -1,5 +1,5 @@
 import { SpeciesState } from './../../types/Species';
-import { SPECIES_FETCH_ERROR, SPECIES_FETCH_LOADING, SPECIES_FETCH_REGIONS, SpeciesActionTypes } from './../../types/actions';
+import { SPECIES_FETCH_ERROR, SPECIES_FETCH_LOADING, SPECIES_FETCH_REGIONS, SPECIES_FETCH_SPECIES, SPECIES_LOADING_TEXT, SpeciesActionTypes } from './../../types/actions';
 
 export const speciesReducer = (state: SpeciesState, action: SpeciesActionTypes) => {
 
@@ -8,8 +8,15 @@ export const speciesReducer = (state: SpeciesState, action: SpeciesActionTypes) 
         case SPECIES_FETCH_REGIONS: {
             return {
                 ...state,
-                speciesLoading: false,
+                region: action.region,
                 regions: action.regions
+            };
+        }
+
+        case SPECIES_FETCH_SPECIES: {
+            return {
+                ...state,
+                species: action.species
             };
         }
 
@@ -17,6 +24,13 @@ export const speciesReducer = (state: SpeciesState, action: SpeciesActionTypes) 
             return {
                 ...state,
                 speciesFetchLoading: action.loading
+            };
+        }
+
+        case SPECIES_LOADING_TEXT: {
+            return {
+                ...state,
+                speciesLoadingText: action.text
             };
         }
 

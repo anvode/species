@@ -5,6 +5,8 @@ import { speciesReducer } from './species.reducer';
 import { SpeciesState } from '../../types/Species';
 
 const initialState: SpeciesState = {
+    region: '',
+    speciesLoadingText: '',
     speciesFetchLoading: false,
     speciesFetchError: false,
     regions: [],

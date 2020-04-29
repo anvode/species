@@ -13,8 +13,6 @@ const Species: React.FC<SpeciesProps> = () => {
     console.log(state);
 
     useEffect(() => {
-        console.log('useEffect', state);
-
         fetchData(dispatch);
     }, []);
 
