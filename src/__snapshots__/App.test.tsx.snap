@@ -9,6 +9,7 @@ exports[`App snapshot App 1`] = `
       class="main__title"
     >
       IUCN Red List of Threatened Species
+      <strong />
     </h1>
     <div
       class="container"
@@ -19,7 +20,10 @@ exports[`App snapshot App 1`] = `
         <h2
           class="loader__title"
         >
-          Fetching Regions
+          Fetching: 
+          <strong>
+            Regions
+          </strong>
         </h2>
         <div
           class="loader"

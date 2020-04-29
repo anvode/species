@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { setFetchErrorAction, setFetchLoadingAction, setRegionsAction, setSpeciesAction, SetLoadingTextAction } from './../../context/species/species.actions';
+import { setFetchErrorAction, setFetchLoadingAction, setRegionsAction, setSpeciesAction, setLoadingTextAction, setSpeciesFilterAction } from './../../context/species/species.actions';
 import { Species } from './../../types/Species';
 
 export const fetchData = async (dispatch: React.Dispatch<any>): Promise<void> => {
@@ -9,21 +9,26 @@ export const fetchData = async (dispatch: React.Dispatch<any>): Promise<void> =>
         const {identifier} = await getRegions(dispatch);
         const SpeciesAddCriticallyEnd = await getSpeciesAddCriticallyEnd(dispatch, identifier);
 
+        dispatch(setSpeciesFilterAction('category', 'CR','criticallyEndangered' ));
+
+        dispatch(setSpeciesFilterAction('class_name', 'MAMMALIA','mammals' ));
+
         dispatch(setFetchLoadingAction(false));
 
     } catch (err) {
-        dispatch(setFetchErrorAction(err));
+        dispatch(setFetchErrorAction(err.message));
     }
     
 };
 
 const getRegions = async (dispatch: React.Dispatch<any>): Promise<{identifier: string}> => {
     // get regions
-    dispatch(SetLoadingTextAction('Fetching Regions'));
+    dispatch(setLoadingTextAction('Regions'));
     const response = await fetch(`${process.env.REACT_APP_API_URL}/region/list?token=${process.env.REACT_APP_API_TOKEN}`);
     const {results} = await response.json();
+    const randomRegion = Math.floor(Math.random()*results.length);
 
-    const {name, identifier} = results[results.length -1];
+    const {name, identifier} = results[9];
 
     dispatch(setRegionsAction(results, name));
 
@@ -34,12 +39,10 @@ const getRegions = async (dispatch: React.Dispatch<any>): Promise<{identifier: s
 
 const getSpeciesAddCriticallyEnd = async (dispatch: React.Dispatch<any>, identifier: string): Promise<void> => {
     // get species
-    dispatch(SetLoadingTextAction('Fetching Species'));
+    dispatch(setLoadingTextAction('Species'));
     const response = await fetch(`${process.env.REACT_APP_API_URL}/species/region/${identifier}/page/0?token=${process.env.REACT_APP_API_TOKEN}`);
         
     const {result} = await response.json();
-
-    dispatch(SetLoadingTextAction('Fetching Measures'));
     
     const fetchMeasure = result.map(async (species: Species) => {
         if (species.category !== 'CR') {
@@ -47,8 +50,10 @@ const getSpeciesAddCriticallyEnd = async (dispatch: React.Dispatch<any>, identif
         } else {
             const responseMeasures = await fetch(`${process.env.REACT_APP_API_URL}/measures/species/id/${species.taxonid}/region/${identifier}?token=${process.env.REACT_APP_API_TOKEN}`);
 
-            const {result: dataMeasure} = await responseMeasures.json();
-            const concatMeasureText = dataMeasure.map((text: {code: string, title: string}) => text.title).join('. ');
+            dispatch(setLoadingTextAction(`Measures of ${species.scientific_name}`));
+
+            const resultMeasures = await responseMeasures.json();
+            const concatMeasureText = resultMeasures.result.map((text: {code: string, title: string}) => text.title).join('. ');
             species['measures'] = concatMeasureText;
 
         }

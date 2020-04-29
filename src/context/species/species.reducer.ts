@@ -1,5 +1,5 @@
-import { SpeciesState } from './../../types/Species';
-import { SPECIES_FETCH_ERROR, SPECIES_FETCH_LOADING, SPECIES_FETCH_REGIONS, SPECIES_FETCH_SPECIES, SPECIES_LOADING_TEXT, SpeciesActionTypes } from './../../types/actions';
+import { Species, SpeciesState } from './../../types/Species';
+import { SPECIES_FETCH_ERROR, SPECIES_FETCH_LOADING, SPECIES_FETCH_REGIONS, SPECIES_FETCH_SPECIES, SPECIES_LOADING_TEXT, SPECIES_FILTER, SpeciesActionTypes } from './../../types/actions';
 
 export const speciesReducer = (state: SpeciesState, action: SpeciesActionTypes) => {
 
@@ -31,6 +31,15 @@ export const speciesReducer = (state: SpeciesState, action: SpeciesActionTypes) 
             return {
                 ...state,
                 speciesLoadingText: action.text
+            };
+        }
+
+        case SPECIES_FILTER: {
+            const filteredList = state.species.filter((item: Species) => item[action.filterProperty] === action.filterValue);
+            console.log('filteredList', filteredList);
+            return {
+                ...state,
+                [action.setProperty]: filteredList
             };
         }
 

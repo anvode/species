@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import SpeciesProvider from './context/species/SpeciesContext';
 import Species from './components/Species';
+import PageTitle from './components/PageTitle/Pagetitle';
 
 import './App.scss';
 
@@ -11,7 +12,7 @@ function App(props: AppProps) {
     return (
         <div className="main">
             <SpeciesProvider>
-                <h1 className="main__title">IUCN Red List of Threatened Species</h1>
+                <PageTitle></PageTitle>
                 <div className="container">
                     <Species></Species>
                 </div>

@@ -3,6 +3,7 @@ import { Species, Region } from './Species';
 export const SPECIES_FETCH_REGIONS = 'SPECIES_FETCH_REGIONS';
 export const SPECIES_FETCH_SPECIES = 'SPECIES_FETCH_SPECIES';
 export const SPECIES_FETCH_LOADING = 'SPECIES_FETCH_LOADING';
+export const SPECIES_FILTER = 'SPECIES_FILTER';
 export const SPECIES_LOADING_TEXT = 'SPECIES_LOADING_TEXT';
 export const SPECIES_FETCH_ERROR = 'SPECIES_FETCH_ERROR';
 
@@ -32,4 +33,11 @@ export interface SetLoadingTextAction {
     text: string;
 }
 
-export type SpeciesActionTypes = SetFetchErrorAction | SetFetchLoadingAction | SetRegionsAction | SetSpeciesAction | SetLoadingTextAction;
+export interface SetSpeciesFilterAction {
+    type: typeof SPECIES_FILTER;
+    filterProperty: string;
+    filterValue: string;
+    setProperty: string;
+}
+
+export type SpeciesActionTypes = SetFetchErrorAction | SetFetchLoadingAction | SetRegionsAction | SetSpeciesAction | SetLoadingTextAction | SetSpeciesFilterAction;

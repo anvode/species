@@ -6,6 +6,7 @@ export interface SpeciesState {
     regions: Region[];
     species: Species[];
     criticallyEndangered: Species[];
+    mammals: Species[];
 }
 
 export interface Region {
@@ -27,4 +28,5 @@ export interface Species {
     population: any;
     category: string;
     measures?: string | null;
+    [key: string]: any;
 }

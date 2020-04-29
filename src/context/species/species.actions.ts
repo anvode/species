@@ -1,5 +1,5 @@
 import { Region, Species } from './../../types/Species';
-import { SPECIES_FETCH_ERROR, SPECIES_FETCH_LOADING, SPECIES_FETCH_REGIONS, SPECIES_FETCH_SPECIES, SPECIES_LOADING_TEXT, SpeciesActionTypes } from './../../types/actions';
+import { SPECIES_FETCH_ERROR, SPECIES_FETCH_LOADING, SPECIES_FETCH_REGIONS, SPECIES_FETCH_SPECIES, SPECIES_LOADING_TEXT, SPECIES_FILTER, SpeciesActionTypes } from './../../types/actions';
 
 export const setRegionsAction = (regions: Region[], region: string): SpeciesActionTypes => {
     return {
@@ -30,9 +30,18 @@ export const setFetchLoadingAction = (loading: boolean): SpeciesActionTypes => {
     };
 };
 
-export const SetLoadingTextAction = (text: string): SpeciesActionTypes => {
+export const setLoadingTextAction = (text: string): SpeciesActionTypes => {
     return {
         type: SPECIES_LOADING_TEXT,
         text: text
+    };
+};
+
+export const setSpeciesFilterAction = (filterProperty: string, filterValue: string, setProperty: string): SpeciesActionTypes => {
+    return {
+        type: SPECIES_FILTER,
+        filterProperty: filterProperty,
+        filterValue: filterValue,
+        setProperty: setProperty
     };
 };

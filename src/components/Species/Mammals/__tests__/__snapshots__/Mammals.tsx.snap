@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Mammals snapshot Mammals 1`] = `
+<DocumentFragment>
+  <div
+    class="mammals"
+  >
+    <h2
+      class="mammals__title"
+    >
+      Mammals in 
+    </h2>
+    No results
+  </div>
+</DocumentFragment>
+`;

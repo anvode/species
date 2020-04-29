@@ -11,7 +11,8 @@ const initialState: SpeciesState = {
     speciesFetchError: false,
     regions: [],
     species: [],
-    criticallyEndangered:[]
+    criticallyEndangered:[],
+    mammals: []
 };
 
 // Create context

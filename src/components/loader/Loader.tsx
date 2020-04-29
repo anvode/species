@@ -10,7 +10,7 @@ const Loader = () => {
 
     return (
         <div className="loader__container">
-            <h2 className="loader__title">{speciesLoadingText}</h2>
+            <h2 className="loader__title">Fetching: <strong>{speciesLoadingText}</strong></h2>
             <div className="loader"><div></div><div></div><div></div><div></div></div>
         </div>
     );

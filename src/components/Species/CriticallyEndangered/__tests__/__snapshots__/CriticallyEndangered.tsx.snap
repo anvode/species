@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CriticallyEndangered Species snapshot CriticallyEndangered Species 1`] = `
+<DocumentFragment>
+  <div
+    class="critically-endangered"
+  >
+    <h2
+      class="critically-endangered__title"
+    >
+      Critically Endangered Species in 
+    </h2>
+    No results
+  </div>
+</DocumentFragment>
+`;
