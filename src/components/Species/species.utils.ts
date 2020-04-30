@@ -28,7 +28,7 @@ const getRegions = async (dispatch: React.Dispatch<any>): Promise<{identifier: s
     const {results} = await response.json();
     const randomRegion = Math.floor(Math.random()*results.length);
 
-    const {name, identifier} = results[9];
+    const {name, identifier} = results[randomRegion];
 
     dispatch(setRegionsAction(results, name));
 

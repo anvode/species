@@ -18,7 +18,7 @@ const CriticallyEndangered: React.FC<CriticallyEndangeredProps> = () => {
                 {criticallyEndangered.map(item => (
                     <div key={item.taxonid} className="species-results__item">
                         <div className={'species-results__name'}>{item.scientific_name}</div>
-                        <div className="species-results__value">{item.measures && item.measures.length > 0 ? item.measures: 'empty field'}</div>
+                        <div className="species-results__value">{item.measures && item.measures.length > 0 ? item.measures: 'empty'}</div>
                     </div>
                 ))}
             </div>

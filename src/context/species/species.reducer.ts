@@ -36,7 +36,7 @@ export const speciesReducer = (state: SpeciesState, action: SpeciesActionTypes) 
 
         case SPECIES_FILTER: {
             const filteredList = state.species.filter((item: Species) => item[action.filterProperty] === action.filterValue);
-            console.log('filteredList', filteredList);
+
             return {
                 ...state,
                 [action.setProperty]: filteredList
